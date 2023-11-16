@@ -1,8 +1,11 @@
 # data-analyticspf
-Hi, I'm Celine. 👋 An aspiring data analyst based in MY. 
+Hi, I'm Celine. 👋 An aspiring data analyst based in MY. 💪
 
 In this repository, I experiment with various data analytics-related ideas, from coding to data visualization. 🧪
 
 By day, I crunch numbers as a performance specialist. 🔎 After hours, I dive into coding, design and data fun (for the hell of it!). 💻
 
-Borderline adhd, super curious and creative. I also love diving, reading and a trip. 🚀✨
+Borderline adhd, super curious and creative. ⚡ I also love diving, reading and a trip. 🚀✨
+
+^My folders are filtered based off projects or public datasets I mostly found from Kaggle.
+Contents include my code writings (Python OR SQL) and visualization using various platforms cartering to data. 
