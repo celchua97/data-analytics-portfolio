@@ -10,6 +10,6 @@ Borderline adhd, super curious and creative. ⚡ I also love diving, reading and
 ^My folders are filtered based off projects or public datasets I mostly found from Kaggle.
 Contents include my code writings (Python OR SQL) and visualization using various platforms cartering to data. 
 
-My kaggle profile: https://www.kaggle.com/celinechuayq
+👷🏼 My kaggle profile: https://www.kaggle.com/celinechuayq
 
-My public tableau: https://public.tableau.com/app/profile/celine.chua/vizzes
+✍🏻 My public tableau: https://public.tableau.com/app/profile/celine.chua/vizzes
