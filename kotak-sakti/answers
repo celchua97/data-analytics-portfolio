@@ -1,11 +1,15 @@
 Kotak Sakti Questionnaire
 -- Question 1 --
+> Describe a Data Engineer role in an organisation and its main responsibilities.
+
 A data engineer's responsibility in a company is to manage the company's data ecosystem. 
 Their main tasks includes managing and manipulating databases, bulding data pipelines, and collaborating with data analysts to ensure data quality.
 A data engineer also aims to ensure that the company's data is secure, clean and organized to be used for analysts to provide insights for stakeholders. 
 
 -- Question 2 --
-(a)
+> Assuming there are 3 tables, namely 'customers.csv', 'invoices.csv', and 'invoice_lines.csv'. 
+(a) Show schema generation query
+
 DROP TABLE IF EXISTS customers;
 CREATE TABLE IF NOT EXISTS customers (
     id INT,
@@ -42,7 +46,8 @@ CREATE TABLE IF NOT EXISTS invoice_lines (
     invoice_id INT
 );
 
-(b)
+(b) Show the SQL query for number of customers purchasing more than 5 books
+
 SELECT COUNT(DISTINCT invoice_lines.customer_id) AS num_customers
 FROM invoice_lines
 JOIN invoices ON invoice_lines.invoice_id = invoices.id
@@ -50,14 +55,16 @@ WHERE invoice_lines.description = 'book'
 GROUP BY invoice_lines.customer_id
 HAVING SUM(invoice_lines.quantity) > 5;
 
-(c)
+(c) Show the SQL query for a list of customers who never purchased anything
+
 SELECT customers.id, customers.name, customers.email
 FROM customers
 LEFT JOIN invoices ON customers.id = invoices.customer_id
 LEFT JOIN invoice_lines ON invoices.id = invoice_lines.invoice_id
 WHERE invoice_lines.invoice_id IS NULL;
 
-(d)
+(d) Show the SQL query for list of book purchased with the users 
+
 SELECT customers.id, customers.name, customers.email, invoice_lines.description
 FROM customers
 JOIN invoices ON customers.id = invoices.customer_id
@@ -65,6 +72,8 @@ JOIN invoice_lines ON invoices.id = invoice_lines.invoice_id
 WHERE invoice_lines.description = 'book';
 
 -- Question 3 --
+> Based on Question 2, implement all queries and the ingestion/extraction process of Appendix A in Python.
+
 (a)
 import sqlite3
 
