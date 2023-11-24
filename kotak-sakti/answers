@@ -12,31 +12,31 @@ CREATE TABLE IF NOT EXISTS customers (
     name VARCHAR(100),
     email VARCHAR(100),
     tel VARCHAR(20),
-    created_at VARCHAR(50),
-    updated_at VARCHAR(50)
+    created_at DATETIME(),
+    updated_at DATETIME()
 );
 
 DROP TABLE IF EXISTS invoices;
 CREATE TABLE IF NOT EXISTS invoices (
     id INT,
     number INT,
-    sub_total INT,
-    tax_total INT,
-    total INT,
+    sub_total FLOAT(10,2),
+    tax_total FLOAT(10,2),
+    total FLOAT(10,2),
     customer_id INT,
-    created_at VARCHAR(50),
-    updated_at VARCHAR(50)
+    created_at DATETIME (),
+    updated_at DATETIME ()
 );
 
 DROP TABLE IF EXISTS invoice_lines;
 CREATE TABLE IF NOT EXISTS invoice_lines (
     id INT,
     description VARCHAR(255),
-    unit_price INT,
+    unit_price FLOAT(10,2),
     quantity INT,
-    sub_total INT,
-    tax_total INT,
-    total INT,
+    sub_total FLOAT(10,2),
+    tax_total FLOAT(10,2),
+    total FLOAT(10,2),
     tax_id VARCHAR(50),
     sku_id INT,
     invoice_id INT
@@ -73,11 +73,11 @@ cursor = conn.cursor()
 
 sql_queries = [
     'DROP TABLE IF EXISTS customers;',
-    'CREATE TABLE IF NOT EXISTS customers (id INT, name VARCHAR(100), email VARCHAR(100), tel VARCHAR(20), created_at VARCHAR(50), updated_at VARCHAR(50));',
+    'CREATE TABLE IF NOT EXISTS customers (id INT, name VARCHAR(100), email VARCHAR(100), tel VARCHAR(20), created_at DATETIME(), updated_at DATETIME());',
     'DROP TABLE IF EXISTS invoices;',
-    'CREATE TABLE IF NOT EXISTS invoices (id INT, number INT, sub_total INT, tax_total INT, total INT, customer_id INT, created_at VARCHAR(50), updated_at VARCHAR(50));',
+    'CREATE TABLE IF NOT EXISTS invoices (id INT, number INT, sub_total FLOAT(10,2), tax_total FLOAT(10,2), total FLOAT(10,2), customer_id INT, created_at DATETIME(), updated_at DATETIME());',
     'DROP TABLE IF EXISTS invoice_lines;',
-    'CREATE TABLE IF NOT EXISTS invoice_lines (id INT, description VARCHAR(255), unit_price INT, quantity INT, sub_total INT, tax_total INT, total INT, tax_id VARCHAR(50), sku_id INT, invoice_id INT);'
+    'CREATE TABLE IF NOT EXISTS invoice_lines (id INT, description VARCHAR(255), unit_price FLOAT(10,2), quantity INT, sub_total FLOAT(10,2), tax_total FLOAT(10,2), total FLOAT(10,2), tax_id VARCHAR(50), sku_id INT, invoice_id INT);'
 ]
 
 for query in sql_queries:
