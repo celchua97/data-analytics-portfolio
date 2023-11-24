@@ -68,7 +68,7 @@ WHERE invoice_lines.description = 'book';
 (a)
 import sqlite3
 
-conn = sqlite3.connect('your_database.db')
+conn = sqlite3.connect('celine_books.db')
 cursor = conn.cursor()
 
 sql_queries = [
@@ -87,3 +87,26 @@ conn.commit()
 conn.close()
 
 (b)
+import sqlite3
+
+conn = sqlite3.connect('celine_books.db')
+cursor = conn.cursor()
+
+query = '''
+    SELECT COUNT(DISTINCT invoice_lines.customer_id) AS num_customers
+    FROM invoice_lines
+    JOIN invoices ON invoice_lines.invoice_id = invoices.id
+    WHERE invoice_lines.description = 'book'
+    GROUP BY invoice_lines.customer_id
+    HAVING SUM(invoice_lines.quantity) > 5
+'''
+
+cursor.execute(query)
+result = cursor.fetchall()
+
+print(result)
+
+conn.close()
+
+(c)
+
