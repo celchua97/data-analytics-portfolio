@@ -109,4 +109,51 @@ print(result)
 conn.close()
 
 (c)
+import sqlite3
+
+conn = sqlite3.connect('celine_books.db')
+cursor = conn.cursor()
+
+query = '''
+    SELECT customers.id, customers.name, customers.email
+    FROM customers
+    LEFT JOIN invoices ON customers.id = invoices.customer_id
+    LEFT JOIN invoice_lines ON invoices.id = invoice_lines.invoice_id
+    WHERE invoice_lines.invoice_id IS NULL;
+'''
+
+cursor.execute(query)
+results = cursor.fetchall()
+
+for list in results:
+    print(list)
+
+conn.close()
+
+(d)
+import sqlite3
+
+conn = sqlite3.connect('celine_books.db')
+cursor = conn.cursor()
+
+query = '''
+    SELECT customers.id, customers.name, customers.email, invoice_lines.description
+    FROM customers
+    JOIN invoices ON customers.id = invoices.customer_id
+    JOIN invoice_lines ON invoices.id = invoice_lines.invoice_id
+    WHERE invoice_lines.description = 'book'
+'''
+
+cursor.execute(query)
+results = cursor.fetchall()
+
+for list in results:
+    print(list)
+
+conn.close()
+
+
+
+
+
 
