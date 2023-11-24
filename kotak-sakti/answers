@@ -66,9 +66,24 @@ WHERE invoice_lines.description = 'book';
 
 -- Question 3 --
 (a)
-import sqlite 3
+import sqlite3
 
-conn = sqlit3.connect('celine_book.db')
+conn = sqlite3.connect('your_database.db')
+cursor = conn.cursor()
 
+sql_queries = [
+    'DROP TABLE IF EXISTS customers;',
+    'CREATE TABLE IF NOT EXISTS customers (id INT, name VARCHAR(100), email VARCHAR(100), tel VARCHAR(20), created_at VARCHAR(50), updated_at VARCHAR(50));',
+    'DROP TABLE IF EXISTS invoices;',
+    'CREATE TABLE IF NOT EXISTS invoices (id INT, number INT, sub_total INT, tax_total INT, total INT, customer_id INT, created_at VARCHAR(50), updated_at VARCHAR(50));',
+    'DROP TABLE IF EXISTS invoice_lines;',
+    'CREATE TABLE IF NOT EXISTS invoice_lines (id INT, description VARCHAR(255), unit_price INT, quantity INT, sub_total INT, tax_total INT, total INT, tax_id VARCHAR(50), sku_id INT, invoice_id INT);'
+]
 
+for query in sql_queries:
+    cursor.execute(query)
 
+conn.commit()
+conn.close()
+
+(b)
