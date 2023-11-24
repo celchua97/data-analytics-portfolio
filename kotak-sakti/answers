@@ -5,5 +5,70 @@ Their main tasks includes managing databases, bulding data pipelines, and collab
 A data engineer also aims to ensure that the company's data is secure, clean and organized to be used for analysts to provide insights for stakeholders. 
 
 -- Question 2 --
+(a)
+DROP TABLE IF EXISTS customers;
+CREATE TABLE IF NOT EXISTS customers (
+    id INT,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    tel VARCHAR(20),
+    created_at VARCHAR(50),
+    updated_at VARCHAR(50)
+);
+
+DROP TABLE IF EXISTS invoices;
+CREATE TABLE IF NOT EXISTS invoices (
+    id INT,
+    number INT,
+    sub_total INT,
+    tax_total INT,
+    total INT,
+    customer_id INT,
+    created_at VARCHAR(50),
+    updated_at VARCHAR(50)
+);
+
+DROP TABLE IF EXISTS invoice_lines;
+CREATE TABLE IF NOT EXISTS invoice_lines (
+    id INT,
+    description VARCHAR(255),
+    unit_price INT,
+    quantity INT,
+    sub_total INT,
+    tax_total INT,
+    total INT,
+    tax_id VARCHAR(50),
+    sku_id INT,
+    invoice_id INT
+);
+
+(b)
+SELECT COUNT(DISTINCT invoice_lines.customer_id) AS num_customers
+FROM invoice_lines
+JOIN invoices ON invoice_lines.invoice_id = invoices.id
+WHERE invoice_lines.description = 'book'
+GROUP BY invoice_lines.customer_id
+HAVING SUM(invoice_lines.quantity) > 5;
+
+(c)
+SELECT customers.id, customers.name, customers.email
+FROM customers
+LEFT JOIN invoices ON customers.id = invoices.customer_id
+LEFT JOIN invoice_lines ON invoices.id = invoice_lines.invoice_id
+WHERE invoice_lines.invoice_id IS NULL;
+
+(d)
+SELECT customers.id, customers.name, customers.email, invoice_lines.description
+FROM customers
+JOIN invoices ON customers.id = invoices.customer_id
+JOIN invoice_lines ON invoices.id = invoice_lines.invoice_id
+WHERE invoice_lines.description = 'book';
+
+-- Question 3 --
+(a)
+import sqlite 3
+
+conn = sqlit3.connect('celine_book.db')
+
 
 
