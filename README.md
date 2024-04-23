@@ -1,5 +1,5 @@
 # data-analyticspf
-Hi, I'm Celine. 👋 An aspiring data analyst based in MY. 💪
+Hi, I'm Celine. 👋 
 
 In this repository, I experiment with various data analytics-related ideas, from coding to data visualization. 🧪
 
